@@ -8,46 +8,47 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #000;
+            background-color: #000; /* 這裡的底色與圖片底色一致 */
             display: flex;
             flex-direction: column;
             font-family: "Microsoft JhengHei", sans-serif;
         }
 
-        /* 1. 最上方的文字列：背景與文字等高 */
+        /* 1. 最上方的文字區塊 */
         .header-text-bar {
             width: 100%;
-            background-color: #00008B; /* 深藍色背景 */
-            color: #FFFFFF;           /* 白色文字，在深藍背景上更清楚 */
+            background-color: transparent; /* 背景透明，與網頁底色一致 */
+            color: #0000FF;               /* 文字換成純藍色 */
             text-align: center;
-            padding: 10px 0;          /* 這裡控制上下留白，達成「與文字等高」 */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            padding: 15px 0;              /* 與文字等高的關鍵：只保留必要的內距 */
             z-index: 10;
         }
 
         .header-text-bar h1 {
-            font-size: 1.8rem;        /* 縮小字體以符合列高 */
+            font-size: 2rem;
             margin: 0;
-            letter-spacing: 2px;
+            font-weight: bold;
+            /* 為了讓藍色在黑色背景更突出，加一點微弱的白色陰影 */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
 
-        /* 2. 中間的動圖區塊：緊接在文字下方 */
+        /* 2. 動圖區塊：緊接在文字下方 */
         .gif-container {
-            flex: 1;                  /* 自動填滿剩餘高度 */
+            flex: 1;
             width: 100%;
-            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #000; /* 確保容器底色也是黑的 */
         }
 
         .background-gif {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;      /* contain 可以看到完整圖片，cover 則會填滿區域 */
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* 確保動圖完整顯示，不被裁切 */
         }
 
-        /* 3. 播放按鈕：固定在右下角或下方 */
+        /* 3. 播放按鈕 */
         #play-btn {
             position: fixed;
             bottom: 30px;
@@ -60,11 +61,6 @@
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        #play-btn:hover {
-            background: #fff;
-            transform: translateX(-50%) scale(1.05);
         }
     </style>
 </head>
